@@ -1,0 +1,63 @@
+local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local Hummanoid = Character.Humanoid or Character.Humanoid.HumanoidRootPart:WaitForChild("Humanoid")
+humanoid.JumpPower = 10
+Local isFlying = false
+Character.Humanoid:WaitForChild("Humanoid)
+function Character.Humanoid.Touched:Connect(hit)
+    if hit.Parent:Name() == "Part" then
+        if not isFlying then
+            local Character = game.Players.LocalPlayer.Character or
+game.Players.LocalPlayer.CharacterAdded:Wait()
+            local Humanoid = Character.Humanoid or
+Character.Humanoid.HumanoidRootPart:WaitForChild("Humanoid")
+            hum.JumpPower = 10
+            isFlying = true
+        else
+            hum.JumpPower = 0
+            isFlying = false
+        end
+    end
+end
+
+local isMovingLeft = false
+local isMovingRight = false
+local isMovingUp = false
+local isMovingDown = false
+Character.Humanoid:WaitForChild("Humanoid")
+Character.Humanoid.MoveDirection:Connect(function(value)
+    if value == Enum.Vector3.X then
+        isMovingLeft = true
+        isMovingRight = false
+        isMovingUp = false
+        isMovingDown = false
+    elseif value == Enum.Vector3.Y then
+        isMovingLeft = false
+        isMovingRight = true
+        isMovingUp = false
+        isMovingDown = false
+    elseif value == Enum.Vector3.Z then
+        isMovingLeft = false
+        isMovingRight = false
+        isMovingUp = true
+        isMovingDown = false
+    elseif value == Enum.vector3.None then
+        isMovingLeft = false
+        isMovingRight = false
+        isMovingUp = false
+        isMovingDown = false
+
+    end
+end
+
+Character.Humanoid:WaitForChild("Humanoid")
+Character.Humanoid.MoveDirection:Connect(function(value)
+    if isMovingLeft == true and value == Enum.Vector3.X then
+Character.Humanoid.Move(EnUM.Vector3.X, 100)
+    elseif isMovingRight == true and value == Enum.Vector3.Y then
+Character.Humanoid.Move(EnUM.Vector3.Y, 100)
+    elseif isMovingUp == true and value == Enum.Vector3.Z then
+Character.Humanoid.Move(EnUM.Vector3.Z, 100)
+    elseif isMovingDown == true and value == Enum.Vector3.None then
+Character.Humanoid.Move(EnUM.Vector3.None, 100)
+    end
+end)
